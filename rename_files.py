@@ -2,7 +2,7 @@ from os import listdir, rename, getcwd, chdir
 from shutil import copy
 
 def rename_files():
-	# Get file names from a folder
+	# Get file names from a folder, change this path to your dir
 	file_list = listdir("/home/kibe/Django/Python/Udacity/rename_files/udacity-prank/prank")
 	# print (file_list)
 
@@ -14,7 +14,7 @@ def rename_files():
 	
 	for file_name in file_list:
 		
-		rename(file_name, file_name.replace("0123456789", ""))
+		rename(file_name, file_name.translate(file_name.maketrans("0123456789", "          "))) # To avoid ValueError: the first two maketrans arguments must have equal length
 		print (file_name)
 	# Go back to our working dir
 	chdir(this_dir)
